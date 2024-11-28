@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImuneMed</title>
+	<link rel="stylesheet" th:href="@{/css/home.css}"/>
+	<style>
+		.link-logout{
+			text-decoration: none;
+			color: black;
+			position: absolute;
+			top: 0px;
+			right: 10px;
+			padding: 10px;
+			z-index: 10000;
+			font-size: 18px;
+			opacity: 0.5;
+		}
+		
+		.link-logout:hover{
+			opacity: 1;
+			transition: 0.9s;
+		}
+		
+		.link-cadastro{
+			border:none;
+			padding: 20px;	
+			border-radius: 15px;
+			font-size: 16px;
+			cursor: pointer;
+			background-color: #60caf0;
+			color: #fff;
+			text-align: center;	
+			text-decoration: none;
+			width: 180px;
+			margin: 0 auto;
+		}
+		
+		.link-cadastros:hover{
+			color: #0a3a5e;
+		}
+		
+	</style>
+</head>
+<body>
+	<form action="#" th:action="@{/home}" method="post" class="form-content" th:object="${paciente}">
+    <main id="inicio">
+        <div class="image"></div>
+        <h1> ImuneMed </h1>
+		<a class="link-logout" th:href="@{/login}">Sair</a>
+
+        <div>
+            <img src="imgs/icon.png" alt="Médico cuidando do paciente">
+            <p> "Cuidar com empatia, curar com conhecimento." </p>
+        </div>
+    </main>
+
+	
+	
+    <section class="conteudo">
+        <div class="immunemed">
+            <div>
+                <h2>ImuneMed</h2>
+                <p>A plataforma ImuneMed é um sistema exclusivo para médicos monitorarem seus pacientes e controlar sua evolução. A plataforma permite atualizar o prontuário para  novos tratamentos e medicamentos de forma personalizada para cada paciente e seu histórico.</p>
+            </div>
+
+            <img src="../imgs/medica-image.jpeg" alt="">
+        </div>
+
+        <div class="pacientes" id="pacientes">
+            <h2>Pacientes</h2>
+		
+			
+			<a th:href="@{/cadastroPaciente}" class="link-cadastro">Cadastrar Paciente</a>
+
+			
+		<section th:each="paciente : ${pacientes}">
+            <div class="cards-pacientes">
+				
+                <div  class="relatorio">
+                    <div class="titulo-relatorio">
+                        <div class="bolinha"></div>
+						<p th:text="${paciente.nome}"></p>
+                    </div>
+                    
+					<p th:text="${paciente.nomeDoenca}"></p>
+           
+					<a th:href="@{/relatorio}">Relatório</a>
+                </div>
+
+                <div class="texto-tratamentos">
+                    <p> Sugestão de tratamentos e medicamentos </p>
+                    <textarea name="" id="" placeholder="Digite aqui..."></textarea>
+                </div>
+            </div>
+		</section> 
+    </section>
+
+    <footer>
+        <div>
+            <a href="#inicio">Início</a>
+            <a href="#pacientes">Pacientes</a>
+            <a href="#inicio">Doenças</a>
+            <a href="#inicio">Hospitais</a>
+        </div>
+    </footer>
+    <p class="copyright">&copy; Todos os direitos reservados 2024.</p>    
+</body>
+</html>

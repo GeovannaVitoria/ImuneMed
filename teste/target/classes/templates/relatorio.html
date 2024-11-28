@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImuneMed</title>
+    <link rel="stylesheet" th:href="@{/css/relatorio.css}"/>
+    <link rel="stylesheet" th:href="@{/css/home.css}"/>
+</head>
+<body>
+	<form action="#" th:action="@{/relatorios}" method="post" class="form-content" th:object="${paciente}">
+    <header>
+        <nav>
+            <ul>
+                <li><a th:href="@{/home}">Início</a></li>
+                <li><a th:href="@{/home}">Pacientes</a></li>
+                <li><a th:href="@{/home}">Doenças</a></li>
+                <li><a th:href="@{/home}">Hospitais</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section th:each="paciente : ${pacientes}">
+		<h1 th:text="${paciente.nome}"></h1>
+
+        <img src="imgs/grafico3.png" alt="">
+
+        <div class="cards">
+            <div class="titulo">
+                <h1> Nome doença </h1>
+            </div>
+
+            <div class="texto">
+				<p th:text="${paciente.nomeDoenca}"></p>
+            </div>
+        </div>
+
+        <div class="cards">
+            <div class="titulo">
+                <h1> Descrição Doença </h1>
+            </div>
+
+            <div class="texto">
+				<p th:text="${paciente.descDoenca}"></p>
+            </div>
+        </div>
+
+        <div class="cards">
+            <div class="titulo">
+                <h1> Data de Nascimento </h1>
+            </div>
+
+            <div class="texto">
+				<p th:text="${paciente.dataNasc}"></p>
+            </div>
+        </div>
+
+        <div class="cards">
+            <div class="titulo">
+                <h1> Gênero </h1>
+            </div>
+
+            <div class="texto">
+				<p th:text="${paciente.sexo}"></p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div>
+            <a th:href="@{/home}">Início</a>
+            <a th:href="@{/home}">Pacientes</a>
+            <a th:href="@{/home}">Doenças</a>
+            <a th:href="@{/home}">Hospitais</a>
+        </div>
+    </footer>
+    <p class="copyright">&copy; Todos os direitos reservados 2024.</p>    
+</body>
+</html>
